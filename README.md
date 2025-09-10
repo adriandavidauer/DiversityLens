@@ -1,2 +1,2 @@
 # DiversityLens
-A Tool to analyze datasets containing faces. 
+A tool to analyze datasets containing faces. 
