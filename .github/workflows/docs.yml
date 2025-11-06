@@ -1,10 +1,10 @@
 name: Publish Documentation
 
-
 on:
   push:
     branches:
       - main
+      - feature_publish-mkdocs
 
 permissions:
   contents: write
