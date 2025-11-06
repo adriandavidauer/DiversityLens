@@ -1,0 +1,8 @@
+site_name: DiversityLens
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - About: about.md
+  - License: license.md
+docs_dir: docs
