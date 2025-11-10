@@ -2,11 +2,16 @@ site_name: DiversityLens
 theme:
   name: material
 docs_dir: docs
-plugins: 
-- mkdocstrings:
-    handlers:
-      python:
-        docstring_style: google
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [.]       
+          options:
+            show_source: false
+            docstring_style: google 
+            show_root_heading: true
 nav:
   - Home: index.md
   - API: API.md

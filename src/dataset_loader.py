@@ -3,7 +3,6 @@ This module is responsible for searching and listing all relevant files(images/v
 In will be used as the first step in order to create a demopgraphic analysis.
 """
 
-
 import os, glob, pathlib
 
 class Loader:           
