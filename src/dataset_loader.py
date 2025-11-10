@@ -6,7 +6,12 @@ In will be used as the first step in order to create a demopgraphic analysis.
 
 import os, glob, pathlib
 
-class Loader:           #This class' functions can be used to manipulate the dataset
+class Loader:           
+    
+    """
+    This class' functions can be used to manipulate the dataset.
+    """
+    
     def __init__(self, dataset): 
         self.dataset= dataset
 
