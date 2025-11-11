@@ -2,6 +2,7 @@ mkdocs
 mkdocs-material
 mkdocstrings
 mkdocstrings-python
+mike
 
 dlib
 opencv-python-headless

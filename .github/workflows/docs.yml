@@ -36,11 +36,11 @@ jobs:
           pip install -r requirements.txt 
 
       - name: Deploy documentation with mike
+          
         run: |
-          if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "Deploying 'main' branch as 'latest'..."
-            mike deploy --push latest
+          if [ "${{ github.ref_name }}" = "main" ]; then echo "Deploying 'main' branch as 'latest'..."
+              python -m mike deploy --push latest
           else
-            echo "Deploying branch ${{ github.ref_name }} as ${{ github.ref_name }}..."
-            mike deploy --push "${{ github.ref_name }}"
-          fi
+              echo "Deploying branch ${{ github.ref_name }} as ${{ github.ref_name }}..."
+              python -m mike deploy --push "${{ github.ref_name }}"
+                fi
