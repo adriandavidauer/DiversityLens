@@ -16,6 +16,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Configure Git author
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com" # DÜZELTME 2: Sondaki o garip noktayı sildim.
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -25,9 +30,17 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y cmake build-essential
+          
       - name: Install dependencies
         run: 
-          pip install -r requirements.txt
-      - name: Deploy documentation
-        run: mkdocs gh-deploy --force
+          pip install -r requirements.txt 
 
+      - name: Deploy documentation with mike
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "Deploying 'main' branch as 'latest'..."
+            mike deploy --push latest
+          else
+            echo "Deploying branch ${{ github.ref_name }} as ${{ github.ref_name }}..."
+            mike deploy --push "${{ github.ref_name }}"
+          fi
