@@ -4,5 +4,4 @@ mkdocstrings
 mkdocstrings-python
 
 dlib
-opencv 
-sys
+opencv-python-headless
