@@ -45,6 +45,8 @@ jobs:
       - name: Deploy documentation with mike
         run: |
               export PATH="$HOME/.local/bin:$PATH"
+              export PYTHONPATH= "$GITHUB_WORKSPACE/src:$PYTHONPATH"
+              
               if [ "${{ github.ref_name }}" = "main" ]; then
                 echo "Deploying 'main' branch as 'latest'..."
                 mike deploy --push latest
