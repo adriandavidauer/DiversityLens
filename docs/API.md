@@ -1,13 +1,13 @@
 # API Reference
 
 ## Dataset Loader
-::: src.Dataset_Loader
+::: src.dataset_loader
 
 ## Face Detector
-::: src.Face_Detector
+::: src.face_detector
 
 ## Demographic Estimator
-::: src.Demographic_Estimator
+::: src.demographic_estimator
 
 ## Analyzer
-::: src.Analyzer
+::: src.analyzer
