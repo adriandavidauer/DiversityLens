@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+
 jobs:
   deploy-docs:
     runs-on: ubuntu-latest
@@ -15,42 +16,39 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Configure Git author
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com" 
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.11 
+          python-version: "3.11"
 
-      - name: Install system dependencies for dlib. #dependencies for c++ library
+      - name: Install system dependencies for dlib
         run: |
           sudo apt-get update
           sudo apt-get install -y cmake build-essential
-          
-      - name: Install dependencies
-        run: 
-          pip install -r requirements.txt 
 
-      - name: Install project
+      - name: Install Python dependencies
         run: |
-          echo "Cleaning up build artifacts..."
-          find . -name "*.egg-info" -type d -exec rm -rf {} +
-          echo "Installing project in editable mode..."
-          pip install -e .
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Expose src on PYTHONPATH
+        run: echo "PYTHONPATH=$GITHUB_WORKSPACE/src:$PYTHONPATH" >> $GITHUB_ENV
 
       - name: Deploy documentation with mike
         run: |
-              export PATH="$HOME/.local/bin:$PATH"
-              export PYTHONPATH= "$GITHUB_WORKSPACE/src:$PYTHONPATH"
-              
-              if [ "${{ github.ref_name }}" = "main" ]; then
-                echo "Deploying 'main' branch as 'latest'..."
-                mike deploy --push latest
-              else
-                echo "Deploying branch ${{ github.ref_name }} as ${{ github.ref_name }}..."
-                mike deploy --push "${{ github.ref_name }}"
-              fi
+          export PATH="$HOME/.local/bin:$PATH"
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "Deploying 'main' branch as 'latest'..."
+            mike deploy --push latest
+          else
+            echo "Deploying branch ${{ github.ref_name }} as ${{ github.ref_name }}..."
+            mike deploy --push "${{ github.ref_name }}"
+          fi
