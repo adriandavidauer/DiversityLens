@@ -35,11 +35,13 @@ jobs:
         run: 
           pip install -r requirements.txt 
 
+      - name: Install project
+        run:
+          pip install -e .
+
       - name: Deploy documentation with mike
-        run: |
-              # Pip'in komutları kurduğu yeri PATH'e (yola) ekle
+        run: 
               export PATH="$HOME/.local/bin:$PATH"
-                
               if [ "${{ github.ref_name }}" = "main" ]; then
                 echo "Deploying 'main' branch as 'latest'..."
                 mike deploy --push latest
