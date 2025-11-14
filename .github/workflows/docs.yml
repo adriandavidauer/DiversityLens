@@ -14,15 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository     
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Configure Git author
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -39,6 +32,11 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Checkout repository     
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Expose src on PYTHONPATH
         run: echo "PYTHONPATH=$GITHUB_WORKSPACE/src:$PYTHONPATH" >> $GITHUB_ENV
 
@@ -48,6 +46,7 @@ jobs:
           if [ "${{ github.ref_name }}" = "main" ]; then
             echo "Deploying 'main' branch as 'latest'..."
             mike deploy --push latest
+            mike set-default --push latest
           else
             echo "Deploying branch ${{ github.ref_name }} as ${{ github.ref_name }}..."
             mike deploy --push "${{ github.ref_name }}"

@@ -4,7 +4,7 @@ theme:
   features:
     -navigation.tabs
     -search.suggest
-    -versioning.switcher
+    -versioning.switcher # this feature is for mike to change the versions
 
 docs_dir: docs
 plugins:
