@@ -37,7 +37,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements_doc.txt
 
       - name: Expose src on PYTHONPATH
         run: echo "PYTHONPATH=$GITHUB_WORKSPACE/src:$PYTHONPATH" >> $GITHUB_ENV
@@ -45,8 +45,8 @@ jobs:
       - name: Deploy documentation with mike
         run: |
           export PATH="$HOME/.local/bin:$PATH"
-          if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "Deploying 'main' branch as 'latest'..."
+          if [ "${{ github.ref_name }}" = "feature_publish-mkdocs" ]; then
+            echo "Deploying 'feature_publish-mkdocs' branch as 'latest'..."
             mike deploy --push latest
             mike set-default --push latest
           else

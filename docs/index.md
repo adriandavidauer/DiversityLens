@@ -1,4 +1,3 @@
 # DiversityLens
 
-Minimal placeholder page.  
-We will document the pipeline, modules and usage here.
+This tool can be used to visualize the datasets which include human faces.
