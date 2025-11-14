@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repository     
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -27,15 +29,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y cmake build-essential
 
+      - name: Configure Git author.  # Necessary part to push the commits
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Install Python dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Checkout repository     
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Expose src on PYTHONPATH
         run: echo "PYTHONPATH=$GITHUB_WORKSPACE/src:$PYTHONPATH" >> $GITHUB_ENV
