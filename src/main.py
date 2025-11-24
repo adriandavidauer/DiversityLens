@@ -2,16 +2,27 @@
 This module is responsible for being the backbone of the project that merges other modules. 
 """
 
-from dataset_loader import Loader
+from dataset_loader import Loader, pathlib
+from demographic_estimator import Estimator
 
-dataset1 = [("Caucasian", "Male", "20"), ("Black", "Female", "20"), ("South Asian", "Female", "40")]
+def main():
+    path = 'data/images'
+    
+    First_Data = Loader(path)
+    found_images = First_Data.image_finder()
 
-First_Dataset= Loader(dataset=dataset1)
-each_person = First_Dataset.load_data()
+    if isinstance(found_images, str):
+        print(f"HATA: {found_images}")
+        return
 
-for i in dataset1:
-        if each_person is None:
-            print("dataset is not found!!!!.")
-        else:
-            print(each_person)
-            
+    print(f"Toplam {len(found_images)} images found.")
+
+    Person = Estimator()
+
+    for image_path in found_images:
+        print(f"\Processing: {image_path.name}")
+        sonuc = Person.analyze_image(image_path)
+        print(sonuc)
+
+if __name__ == "__main__":
+    main()
