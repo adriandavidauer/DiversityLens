@@ -25,7 +25,6 @@ class Estimator:
                 enforce_detection=False, # in case no face found.
                 silent=True
             )
-            
             # DeepFace might return list or dict. 
             if isinstance(results, list):
                 result = results[0]

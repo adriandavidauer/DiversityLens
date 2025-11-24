@@ -17,6 +17,18 @@ class Loader:
     def __init__(self, dataset): 
         self.dataset= dataset
 
-    def load_data(self):
-        for i in self.dataset:
-            return 
+    def image_finder(self):
+        # Klasör var mı diye kontrol et, yoksa patlamasın.
+        if not self.directory.exists():
+            return f"Errror: '{self.directory}"
+        valid_extensions = {'.png', '.jpg', '.jpeg'}
+
+        image_files = [
+            file for file in self.directory.iterdir() 
+            if file.is_file() and file.suffix.lower() in valid_extensions
+        ]
+
+        if not image_files:
+            return "No images found."
+        
+        return image_files

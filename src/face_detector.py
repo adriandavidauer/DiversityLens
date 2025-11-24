@@ -5,14 +5,13 @@ which may include both images and videos.
 
 import os, dlib, cv2
 
-
 model_dir= "dlib_models"
 #face_detector_path= os.path.join(model_dir, "mmod_human_face_detector.dat")    #real face detector file
 shape_detector_path= os.path.join(model_dir, "shape_predictor_5_face_landmarks.dat")
 
 try:
     #detector= dlib.cnn_face_detection_model_v1(face_detector_path)     #the real face detector
-    detector = dlib.get_frontal_face_detector().   #basic face detector with lower accuracy
+    detector = dlib.get_frontal_face_detector()   #basic face detector with lower accuracy
     sp= dlib.shape_predictor(shape_detector_path)
     print("Done !")
 except Exception as e:
@@ -20,7 +19,6 @@ except Exception as e:
     exit()
 
 image_path= "person.jpeg"
-
 if not os.path.exists(image_path):
     print(f"Error: '{image_path}'")
 else:
