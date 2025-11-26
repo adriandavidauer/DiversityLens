@@ -432,23 +432,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="face_detector">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#src.face_detector.detect_faces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect_faces
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -470,6 +453,40 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="demographic_estimator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.demographic_estimator.Estimator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estimator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.demographic_estimator.Estimator.analyze_image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        analyze_image
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -642,23 +659,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="face_detector">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#src.face_detector.detect_faces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect_faces
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -680,6 +680,40 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="demographic_estimator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.demographic_estimator.Estimator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estimator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.demographic_estimator.Estimator.analyze_image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        analyze_image
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -851,24 +885,6 @@ which may include both images and videos.</p>
 
 
 
-<div class="doc doc-object doc-function">
-
-
-<h3 id="src.face_detector.detect_faces" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">detect_faces</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></code>
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>This fuction will detect the faces of people in images/videos</p>
-
-
-    </div>
-
-</div>
-
 
 
   </div>
@@ -890,9 +906,8 @@ which may include both images and videos.</p>
 
     <div class="doc doc-contents first">
 
-        <p>This module is responsible for estimating demographic attributes
-(age, gender, and ethnicity) for detected faces, using predictions
-from a pretrained model.</p>
+        <p>This module is responsible for estimating age, gender, and race using DeepFace.
+It acts as a wrapper for the deep learning model.</p>
 
 
 
@@ -912,6 +927,68 @@ from a pretrained model.</p>
 
 
 
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="src.demographic_estimator.Estimator" class="doc doc-heading">
+            <code>Estimator</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="src.demographic_estimator.Estimator.analyze_image" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">analyze_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Takes an image path (Path object or string) and returns demographic info.</p>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
 
 
 
