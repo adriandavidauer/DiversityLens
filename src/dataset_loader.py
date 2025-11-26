@@ -13,12 +13,10 @@ class Loader:
     
     face_detector= dlib.cnn_face_detection_model_v1('dlib_models/mmod_human_face_detector.dat')
 
-
     def __init__(self, dataset): 
         self.dataset= dataset
 
     def image_finder(self):
-        # Klasör var mı diye kontrol et, yoksa patlamasın.
         if not self.directory.exists():
             return f"Errror: '{self.directory}"
         valid_extensions = {'.png', '.jpg', '.jpeg'}
@@ -30,5 +28,4 @@ class Loader:
 
         if not image_files:
             return "No images found."
-        
         return image_files

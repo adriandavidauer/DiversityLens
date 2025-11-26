@@ -5,6 +5,7 @@ This module is responsible for being the backbone of the project that merges oth
 from dataset_loader import Loader, pathlib
 from demographic_estimator import Estimator
 
+
 def main():
     path = 'data/images'
     
@@ -12,10 +13,10 @@ def main():
     found_images = First_Data.image_finder()
 
     if isinstance(found_images, str):
-        print(f"HATA: {found_images}")
+        print(f"Error: {found_images}")
         return
 
-    print(f"Toplam {len(found_images)} images found.")
+    print(f"Total {len(found_images)} images found.")
 
     Person = Estimator()
 

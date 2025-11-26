@@ -4,6 +4,8 @@ It acts as a wrapper for the deep learning model.
 """
 from deepface import DeepFace
 
+
+
 class Estimator:
     def __init__(self):
         pass
