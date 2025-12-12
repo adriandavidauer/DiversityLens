@@ -21,14 +21,11 @@ def main():
     all_results= []
 
     for image_path in found_images:
-        try:
-            result = Person.analyze_image(image_path) 
-            if result:
-                all_results.append(result)
+            result_list = Person.analyze_image(image_path) 
+            if result_list:
+                all_results.extend(result_list)
             else:
-                print("No new face found.")
-        except Exception as e:
-            print(f"Error {image_path.name} : {e}")
+                print("No new face found.") 
     
 
     ### SAVE THE DATA AS CSV FILE
