@@ -4,8 +4,6 @@ It acts as a wrapper for the deep learning model.
 """
 from deepface import DeepFace
 
-
-
 class Estimator:
     def __init__(self):
         pass
@@ -33,11 +31,10 @@ class Estimator:
             else:
                 result = results
             summary = {
-                "file": image_path.name,
-                "age": result['age'],
-                "gender": result['dominant_gender'],
-                "race": result['dominant_race'],
-                "confidence": result['face_confidence'] 
+                "Age": result['age'],
+                "Gender": result['dominant_gender'],
+                "Race": result['dominant_race'],
+                #"confidence": result['face_confidence'] 
             }
             return summary
 
