@@ -3,22 +3,27 @@ This module is responsible for searching and listing all relevant files(images/v
 In will be used as the first step in order to create a demopgraphic analysis.
 """
 
-import os, glob, pathlib, dlib
+import os, glob, pathlib
+
+from deepface import DeepFace
 
 class Loader:           
     
     """
     This class' functions can be used to manipulate the dataset.
     """
-    
-    face_detector= dlib.cnn_face_detection_model_v1('dlib_models/mmod_human_face_detector.dat')
-
     def __init__(self, dataset): 
         self.directory= pathlib.Path(dataset)
+        """
+        This function helps to embed the 'dataset path' into the object of the class.
+        """
 
-    def image_finder(self):
+    def find_images(self):
+        """
+        This function finds the images in a given path.
+        """
         if not self.directory.exists():
-            return f"Errror: '{self.directory}"
+            return f"Errror: '{FileNotFoundError}"
         valid_extensions = {'.png', '.jpg', '.jpeg'}
 
         image_files = [

@@ -1,2 +1,2 @@
-dlib
+opencv
 opencv-python-headless

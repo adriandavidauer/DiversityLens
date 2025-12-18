@@ -1,33 +1,39 @@
 """
 This module is responsible for being the backbone of the project that merges other modules. 
 """
-from dataset_loader import Loader, pathlib
-from demographic_estimator import Estimator
-from data_writing import Write
+from src.dataset_loader import Loader, pathlib
+from src.demographic_estimator import analyze_image
+from src.CsvWriter import Write
+import argparse
 
 def main():
-    path = 'data/images'
-    
-    First_Data = Loader(path)
-    found_images = First_Data.image_finder()
 
-    if isinstance(found_images, str):
-        print(f"Error: {found_images}")
-        return
+    """
+    This function initiates the process to analyze the face dataset.
+    """
+
+    parser= argparse.ArgumentParser()
+    parser.add_argument("--path", default= "data/images")
+    args= parser.parse_args()
+    path= args.path
+    
+    first_data = Loader(path)
+    found_images = first_data.find_images()
+
+#    if isinstance(found_images, str):
+#        print(f"Error: {found_images}")
+#        return
 
     print(f"Total {len(found_images)} images found.")
-
-    Person = Estimator()
     all_results= []
 
     for image_path in found_images:
-            result_list = Person.analyze_image(image_path) 
+            result_list = analyze_image(image_path) 
             if result_list:
                 all_results.extend(result_list)
             else:
                 print("No new face found.") 
     
-
     ### SAVE THE DATA AS CSV FILE
     if all_results:
         Writer1= Write()
