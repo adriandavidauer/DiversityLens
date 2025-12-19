@@ -1,2 +1,2 @@
-dlib
-opencv-python-headless
+deepface
+tf-keras
