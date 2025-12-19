@@ -1,9 +1,9 @@
 """
 This module is responsible for being the backbone of the project that merges other modules. 
 """
-from src.dataset_loader import Loader, pathlib
-from src.demographic_estimator import analyze_image
-from src.CsvWriter import Write
+from .dataset_loader import Loader, pathlib
+from .demographic_estimator import analyze_image
+from .data_writing import write_csv
 import argparse
 from src.logger import setup_logger
 
@@ -16,9 +16,12 @@ def main():
     logger.info("DiversityLens Started...")
 
     parser= argparse.ArgumentParser()
-    parser.add_argument("--path", default= "data/images")
+    parser.add_argument("--path", default= "tests/data/images", type= str, help= "Path to the dataset directory.")
+    parser.add_argument("--output", default= "Demographic_Results.csv", type= str, help= "Path to the output CSV file.")
     args= parser.parse_args()
     path= args.path
+    output= args.output
+
 
     logger.info(f"Analyzing the folder: {path}")
 
@@ -50,13 +53,8 @@ def main():
 
     ### SAVE THE DATA AS CSV FILE
     if all_results:
-        logger.info(f"Results are saved in CSV File... ({len(all_results)})")
-        try:
-            Writer1 = Write()
-            Writer1.write(all_results)
-            logger.info("Successfully saved!")
-        except Exception as e:
-            logger.error(f"CSV Error: {e}")
+        write_csv(output, all_results)
+        logger.info(f"{len(all_results)} Results are saved in CSV File.")
     else:
         logger.info("No data to save.")
 if __name__ == "__main__":
