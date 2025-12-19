@@ -5,32 +5,30 @@ In will be used as the first step in order to create a demopgraphic analysis.
 
 import os, glob, pathlib
 
-from deepface import DeepFace
 
 class Loader:           
-    
+    IMAGE_EXTENSIONS = {'.png', '.jpg', '.jpeg'}
     """
     This class' functions can be used to manipulate the dataset.
     """
     def __init__(self, dataset): 
+        """
+        :param dataset: Path to the dataset directory.
+        """
         self.directory= pathlib.Path(dataset)
-        """
-        This function helps to embed the 'dataset path' into the object of the class.
-        """
+
 
     def find_images(self):
         """
         This function finds the images in a given path.
+        :return: List of image file paths.
         """
         if not self.directory.exists():
-            return f"Errror: '{FileNotFoundError}"
-        valid_extensions = {'.png', '.jpg', '.jpeg'}
-
+            raise FileNotFoundError(f"Directory '{self.directory}' does not exist.")
+        
         image_files = [
             file for file in self.directory.iterdir() 
-            if file.is_file() and file.suffix.lower() in valid_extensions
+            if file.is_file() and file.suffix.lower() in self.IMAGE_EXTENSIONS
         ]
 
-        if not image_files:
-            return "No images found."
         return image_files
