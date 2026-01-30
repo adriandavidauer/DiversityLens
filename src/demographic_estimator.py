@@ -13,11 +13,7 @@ def analyze_image(image_path):
     """
     image_path = Path(image_path)
     processed_faces = []
-    
-
     img_str = str(image_path)
-    # print(f"Analyzing: {img_str} ...") 
-    
     results = DeepFace.analyze(
         img_path=img_str, 
         actions=['age', 'gender', 'race'],
@@ -25,11 +21,10 @@ def analyze_image(image_path):
         enforce_detection=False, 
         silent=True
     )
-    
     if not isinstance(results, list):
         results = [results]
     for face in results:
-        # for the case no face was detected
+        # In case no face was detected
         if 'dominant_race' not in face:
             continue
 
