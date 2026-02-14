@@ -15,8 +15,11 @@
         <link rel="next" href="../about/">
       
       
+        
+      
+      
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -24,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
       
       
 
@@ -51,7 +54,6 @@
 
     
     
-    
   </head>
   
   
@@ -76,9 +78,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="DiversityLens" class="md-header__button md-logo" aria-label="DiversityLens" data-md-component="logo">
       
@@ -137,6 +137,8 @@
         </button>
       </nav>
       
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -162,6 +164,93 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../license/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  License
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -175,8 +264,10 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="DiversityLens" class="md-nav__button md-logo" aria-label="DiversityLens" data-md-component="logo">
       
@@ -201,9 +292,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Home
+  
+
     
   </span>
+  
   
 
       </a>
@@ -232,9 +328,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     API
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -245,9 +346,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     API
+  
+
     
   </span>
+  
   
 
       </a>
@@ -270,7 +376,9 @@
         <li class="md-nav__item">
   <a href="#dataset-loader" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataset Loader
+      
+        Dataset Loader
+      
     </span>
   </a>
   
@@ -279,7 +387,9 @@
         <li class="md-nav__item">
   <a href="#src.dataset_loader" class="md-nav__link">
     <span class="md-ellipsis">
-      dataset_loader
+      
+        dataset_loader
+      
     </span>
   </a>
   
@@ -289,7 +399,54 @@
           <li class="md-nav__item">
   <a href="#src.dataset_loader.Loader" class="md-nav__link">
     <span class="md-ellipsis">
-      Loader
+      
+        Loader
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loader">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.dataset_loader.Loader.VIDEO_EXTENSIONS" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VIDEO_EXTENSIONS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.dataset_loader.Loader.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.dataset_loader.Loader.find_images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find_images
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.dataset_loader.Loader.find_videos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find_videos
+      
     </span>
   </a>
   
@@ -297,34 +454,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#face-detector" class="md-nav__link">
-    <span class="md-ellipsis">
-      Face Detector
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.face_detector" class="md-nav__link">
-    <span class="md-ellipsis">
-      face_detector
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="face_detector">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#src.face_detector.detect_faces" class="md-nav__link">
-    <span class="md-ellipsis">
-      detect_faces
-    </span>
-  </a>
   
 </li>
         
@@ -336,7 +465,9 @@
         <li class="md-nav__item">
   <a href="#demographic-estimator" class="md-nav__link">
     <span class="md-ellipsis">
-      Demographic Estimator
+      
+        Demographic Estimator
+      
     </span>
   </a>
   
@@ -345,25 +476,126 @@
         <li class="md-nav__item">
   <a href="#src.demographic_estimator" class="md-nav__link">
     <span class="md-ellipsis">
-      demographic_estimator
+      
+        demographic_estimator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="demographic_estimator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.demographic_estimator.analyze_image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        analyze_image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.demographic_estimator.analyze_video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        analyze_video
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualization
+      
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#analyzer" class="md-nav__link">
+  <a href="#src.visualization" class="md-nav__link">
     <span class="md-ellipsis">
-      Analyzer
+      
+        visualization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.visualization.Visualizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualizer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.visualization.Visualizer.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.visualization.Visualizer.plot_charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Module
+      
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.analyzer" class="md-nav__link">
+  <a href="#src.main" class="md-nav__link">
     <span class="md-ellipsis">
-      analyzer
+      
+        main
+      
     </span>
   </a>
   
@@ -389,9 +621,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     About
+  
+
     
   </span>
+  
   
 
       </a>
@@ -411,9 +648,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     License
+  
+
     
   </span>
+  
   
 
       </a>
@@ -450,7 +692,9 @@
         <li class="md-nav__item">
   <a href="#dataset-loader" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataset Loader
+      
+        Dataset Loader
+      
     </span>
   </a>
   
@@ -459,7 +703,9 @@
         <li class="md-nav__item">
   <a href="#src.dataset_loader" class="md-nav__link">
     <span class="md-ellipsis">
-      dataset_loader
+      
+        dataset_loader
+      
     </span>
   </a>
   
@@ -469,7 +715,54 @@
           <li class="md-nav__item">
   <a href="#src.dataset_loader.Loader" class="md-nav__link">
     <span class="md-ellipsis">
-      Loader
+      
+        Loader
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loader">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.dataset_loader.Loader.VIDEO_EXTENSIONS" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VIDEO_EXTENSIONS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.dataset_loader.Loader.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.dataset_loader.Loader.find_images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find_images
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.dataset_loader.Loader.find_videos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find_videos
+      
     </span>
   </a>
   
@@ -477,34 +770,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#face-detector" class="md-nav__link">
-    <span class="md-ellipsis">
-      Face Detector
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#src.face_detector" class="md-nav__link">
-    <span class="md-ellipsis">
-      face_detector
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="face_detector">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#src.face_detector.detect_faces" class="md-nav__link">
-    <span class="md-ellipsis">
-      detect_faces
-    </span>
-  </a>
   
 </li>
         
@@ -516,7 +781,9 @@
         <li class="md-nav__item">
   <a href="#demographic-estimator" class="md-nav__link">
     <span class="md-ellipsis">
-      Demographic Estimator
+      
+        Demographic Estimator
+      
     </span>
   </a>
   
@@ -525,25 +792,126 @@
         <li class="md-nav__item">
   <a href="#src.demographic_estimator" class="md-nav__link">
     <span class="md-ellipsis">
-      demographic_estimator
+      
+        demographic_estimator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="demographic_estimator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.demographic_estimator.analyze_image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        analyze_image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.demographic_estimator.analyze_video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        analyze_video
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualization
+      
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#analyzer" class="md-nav__link">
+  <a href="#src.visualization" class="md-nav__link">
     <span class="md-ellipsis">
-      Analyzer
+      
+        visualization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.visualization.Visualizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualizer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src.visualization.Visualizer.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.visualization.Visualizer.plot_charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Module
+      
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#src.analyzer" class="md-nav__link">
+  <a href="#src.main" class="md-nav__link">
     <span class="md-ellipsis">
-      analyzer
+      
+        main
+      
     </span>
   </a>
   
@@ -559,6 +927,7 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -618,8 +987,6 @@ In will be used as the first step in order to create a demopgraphic analysis.</p
 
 
 
-        <p>This class' functions can be used to manipulate the dataset.</p>
-
 
 
 
@@ -638,8 +1005,87 @@ In will be used as the first step in order to create a demopgraphic analysis.</p
 
 
 
+<div class="doc doc-object doc-attribute">
 
 
+
+<h4 id="src.dataset_loader.Loader.VIDEO_EXTENSIONS" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">VIDEO_EXTENSIONS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;.mp4&#39;</span><span class="p">,</span> <span class="s1">&#39;.avi&#39;</span><span class="p">,</span> <span class="s1">&#39;.mov&#39;</span><span class="p">,</span> <span class="s1">&#39;.mkv&#39;</span><span class="p">,</span> <span class="s1">&#39;.webm&#39;</span><span class="p">}</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>This class' functions can be used to manipulate the dataset.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="src.dataset_loader.Loader.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>:param dataset: Path to the dataset directory.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="src.dataset_loader.Loader.find_images" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">find_images</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>This function finds the images in a given path.
+:return: List of image file paths.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="src.dataset_loader.Loader.find_videos" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">find_videos</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>This function finds the videos in a given path.
+::return: List of videos file paths.</p>
+
+
+    </div>
+
+</div>
 
 
 
@@ -656,23 +1102,23 @@ In will be used as the first step in order to create a demopgraphic analysis.</p
 
     </div>
 
-</div><h2 id="face-detector">Face Detector</h2>
+</div><h2 id="demographic-estimator">Demographic Estimator</h2>
 
 
 <div class="doc doc-object doc-module">
 
 
 
-<h2 id="src.face_detector" class="doc doc-heading">
-            <code>src.face_detector</code>
+<h2 id="src.demographic_estimator" class="doc doc-heading">
+            <code>src.demographic_estimator</code>
 
 
 </h2>
 
     <div class="doc doc-contents first">
 
-        <p>This module is responsible for detecting human faces within a given dataset,
-which may include both images and videos.</p>
+        <p>This module is responsible for estimating age, gender, and race using DeepFace.
+It acts as a wrapper for the deep learning model.</p>
 
 
 
@@ -697,15 +1143,38 @@ which may include both images and videos.</p>
 <div class="doc doc-object doc-function">
 
 
-<h3 id="src.face_detector.detect_faces" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">detect_faces</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></code>
+<h3 id="src.demographic_estimator.analyze_image" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">analyze_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span></code>
 
 </h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>This fuction will detect the faces of people in images/videos</p>
+        <p>This function takes an image path and returns a LIST of demographic info for all faces found.
+:param image_path: Path to the image file.
+:return: List of dictionaries with demographic information for each face.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="src.demographic_estimator.analyze_video" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">analyze_video</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">skip_frames</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>This function takes a video path and analyzes frames periodically.
+:param video_path: Path to the video file.
+:param skip_frames: Number of frames to skip (e.g., 30 for approx 1 sec if FPS is 30).
+:return: List of dictionaries with demographic information for each face found.</p>
 
 
     </div>
@@ -718,24 +1187,58 @@ which may include both images and videos.</p>
 
     </div>
 
-</div><h2 id="demographic-estimator">Demographic Estimator</h2>
+</div><h2 id="visualization">Visualization</h2>
 
 
 <div class="doc doc-object doc-module">
 
 
 
-<h2 id="src.demographic_estimator" class="doc doc-heading">
-            <code>src.demographic_estimator</code>
+<h2 id="src.visualization" class="doc doc-heading">
+            <code>src.visualization</code>
 
 
 </h2>
 
     <div class="doc doc-contents first">
 
-        <p>This module is responsible for estimating demographic attributes
-(age, gender, and ethnicity) for detected faces, using predictions
-from a pretrained model.</p>
+        <p>This module is responsible for visualizing the demographic data using Bokeh.
+It generates an interactive HTML dashboard directly from memory.</p>
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="src.visualization.Visualizer" class="doc doc-heading">
+            <code>Visualizer</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
 
 
 
@@ -757,29 +1260,74 @@ from a pretrained model.</p>
 
 
 
+<div class="doc doc-object doc-function">
+
+
+<h4 id="src.visualization.Visualizer.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">data_list</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>:param data_list: List of dictionaries containing demographic data.
+:param output_dir: Directory where the dashboard.html will be saved.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="src.visualization.Visualizer.plot_charts" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_charts</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>This function creates an HTML dashboard.</p>
+
+
+    </div>
+
+</div>
+
 
 
   </div>
 
     </div>
 
-</div><h2 id="analyzer">Analyzer</h2>
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="main-module">Main Module</h2>
 
 
 <div class="doc doc-object doc-module">
 
 
 
-<h2 id="src.analyzer" class="doc doc-heading">
-            <code>src.analyzer</code>
+<h2 id="src.main" class="doc doc-heading">
+            <code>src.main</code>
 
 
 </h2>
 
     <div class="doc doc-contents first">
 
-        <p>This module is responsible for creating statistical analysis on the demographic predictions
-of a given dataset.</p>
+        <p>This module is responsible for being the backbone of the project that merges other modules.</p>
 
 
 
@@ -856,10 +1404,11 @@ of a given dataset.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": "-navigation.tabs -search.suggest -versioning.switcher", "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
