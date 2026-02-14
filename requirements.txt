@@ -1,2 +1,5 @@
 deepface
 tf-keras
+pandas
+matplotlib
+bokeh

@@ -210,3 +210,19 @@ __marimo__/
 
 #CSV RESULTS
 *.csv
+
+#LOG files
+*.log
+
+# Dataset klasörleri
+data/
+tests/data/
+results/
+
+# Dosya uzantilari
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.avi
+*.mov
