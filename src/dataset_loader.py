@@ -3,21 +3,21 @@ This module is responsible for searching and listing all relevant files(images/v
 In will be used as the first step in order to create a demopgraphic analysis.
 """
 
-import os, glob, pathlib
+import pathlib
 
 
-class Loader:           
-    IMAGE_EXTENSIONS = {'.png', '.jpg', '.jpeg'}
-    VIDEO_EXTENSIONS = {'.mp4', '.avi', '.mov', '.mkv', '.webm'}
+class Loader:
+    IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg"}
+    VIDEO_EXTENSIONS = {".mp4", ".avi", ".mov", ".mkv", ".webm"}
     """
     This class' functions can be used to manipulate the dataset.
     """
-    def __init__(self, dataset): 
+
+    def __init__(self, dataset):
         """
         :param dataset: Path to the dataset directory.
         """
-        self.directory= pathlib.Path(dataset)
-
+        self.directory = pathlib.Path(dataset)
 
     def find_images(self):
         """
@@ -27,10 +27,12 @@ class Loader:
         if not self.directory.exists():
             raise FileNotFoundError(f"Directory '{self.directory}' does not exist.")
         image_files = [
-            file for file in self.directory.rglob('*') # check all the files
+            file
+            for file in self.directory.rglob("*")  # check all the files
             if file.is_file() and file.suffix.lower() in self.IMAGE_EXTENSIONS
         ]
         return image_files
+
     def find_videos(self):
         """
         This function finds the videos in a given path.
@@ -38,9 +40,10 @@ class Loader:
         """
         if not self.directory.exists():
             raise FileNotFoundError(f"Directory '{self.directory}' does not exist.")
-        
+
         video_files = [
-            file for file in self.directory.rglob('*')
+            file
+            for file in self.directory.rglob("*")
             if file.is_file() and file.suffix.lower() in self.VIDEO_EXTENSIONS
         ]
         return video_files
