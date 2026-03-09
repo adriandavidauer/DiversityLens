@@ -5,6 +5,9 @@ on:
     branches:
       - main
       - develop
+    tags:
+      - "v*"
+
 permissions:
   contents: write
 
@@ -13,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository     
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -28,7 +31,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y cmake build-essential
 
-      - name: Configure Git author.  # Necessary part to push the commits
+      - name: Configure Git author
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -43,12 +46,16 @@ jobs:
 
       - name: Deploy documentation with mike
         run: |
-          export PATH="$HOME/.local/bin:$PATH"
-          if [ "${{ github.ref_name }}" = "feature_publish-mkdocs" ]; then
-            echo "Deploying 'feature_publish-mkdocs' branch as 'latest'..."
-            mike deploy --push latest
+          if [[ "${{ github.ref_type }}" == "tag" ]]; then
+            VERSION="${{ github.ref_name }}"
+            VERSION="${VERSION#v}"
+            echo "Deploying tag as version ${VERSION}..."
+            mike deploy --push "${VERSION}" latest --update-aliases
             mike set-default --push latest
+          elif [[ "${{ github.ref_name }}" == "develop" ]]; then
+            echo "Deploying develop as dev..."
+            mike deploy --push dev
           else
-            echo "Deploying branch ${{ github.ref_name }} as ${{ github.ref_name }}..."
-            mike deploy --push "${{ github.ref_name }}"
+            echo "Deploying main as stable..."
+            mike deploy --push stable
           fi
