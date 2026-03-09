@@ -30,7 +30,7 @@ def analyze_image(image_path: str | Path) -> list[dict[str, Any]]:
     results = DeepFace.analyze(
         img_path=img_str,
         actions=["age", "gender", "race"],
-        detector_backend="opencv",
+        detector_backend="retinaface",
         enforce_detection=False,
         silent=True,
     )
@@ -38,6 +38,8 @@ def analyze_image(image_path: str | Path) -> list[dict[str, Any]]:
         results = [results]
     for face in results:
         if "dominant_race" not in face:
+            continue
+        if face.get("face_confidence", 0) < 0.9:
             continue
 
         summary = {
@@ -94,7 +96,7 @@ def analyze_video(
                 analysis = DeepFace.analyze(
                     img_path=rgb_frame,
                     actions=["age", "gender", "race"],
-                    detector_backend="opencv",
+                    detector_backend="retinaface",
                     enforce_detection=False,
                     silent=True,
                 )
@@ -104,6 +106,8 @@ def analyze_video(
 
                 for face in analysis:
                     if "dominant_race" not in face:
+                        continue
+                    if face.get("face_confidence", 0) < 0.9:
                         continue
 
                     summary = {
