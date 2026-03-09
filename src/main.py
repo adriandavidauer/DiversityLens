@@ -3,19 +3,19 @@ This module is responsible for being the backbone of the project that merges oth
 """
 
 import argparse
-from src.dataset_loader import Loader, pathlib
+import pathlib
+
+from src.dataset_loader import Loader
 from src.demographic_estimator import analyze_image, analyze_video
 from src.data_writing import write_csv
 from src.logger import setup_logger
 from src.visualization import Visualizer
 
 
-def main():
-    # 1. Logger Creation
+def main() -> None:
     logger = setup_logger()
     logger.info("DiversityLens Started...")
 
-    # 2. CLI Creation
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--path", default="tests/data", type=str, help="Path to the dataset directory."
@@ -33,27 +33,19 @@ def main():
 
     logger.info(f"Analyzing the folder: {path}")
 
-    # Find the images
-    first_data = Loader(path)
-    found_images = first_data.find_images()
+    try:
+        first_data = Loader(path)
+        found_images = first_data.find_images()
+        logger.info(f"Total {len(found_images)} images found.")
 
-    if isinstance(found_images, str):
-        logger.error(f"Error finding images: {found_images}")
+        found_videos = first_data.find_videos()
+        logger.info(f"Total {len(found_videos)} videos found.")
+    except FileNotFoundError as e:
+        logger.error(str(e))
         return
 
-    logger.info(f"Total {len(found_images)} images found.")
+    all_results: list[dict] = []
 
-    # Find the videos
-
-    found_videos = first_data.find_videos()
-    logger.info(f"Total {len(found_videos)} videos found.")
-    if isinstance(found_videos, str):
-        logger.error(f"Error finding videos: {found_videos}")
-        return
-
-    all_results = []
-
-    # Analyze Images
     for image_path in found_images:
         try:
             result_list = analyze_image(image_path)
@@ -67,9 +59,8 @@ def main():
         except Exception as e:
             logger.error(f"Error processing {image_path.name}: {e}")
 
-    # Analyze Videos
     if found_videos:
-        logger.warning(f"Found {len(found_videos)} videos")
+        logger.info(f"Processing {len(found_videos)} videos...")
         for video_path in found_videos:
             try:
                 result_list = analyze_video(video_path)
@@ -83,19 +74,16 @@ def main():
             except Exception as e:
                 logger.error(f"Error processing {video_path.name}: {e}")
 
-    # Save results
     if all_results:
         logger.info(f"Saving {len(all_results)} results to {output_file}...")
         try:
             write_csv(output_file, all_results)
             logger.info("Successfully saved!")
-            # data_visualizer = Visualizer(output_file)
             logger.info("Starting visualization...")
             output_dir = pathlib.Path(output_file).parent
             viz = Visualizer(all_results, output_dir)
             viz.plot_charts()
-
-        except Exception as e:
+1        except Exception as e:
             logger.error(f"CSV Error: {e}")
     else:
         logger.warning("No data to save.")

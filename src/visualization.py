@@ -4,26 +4,31 @@ It generates an interactive HTML dashboard directly from memory.
 """
 
 from math import pi
-import pandas as pd
 from pathlib import Path
+from typing import Any
 
-from bokeh.plotting import figure, save, output_file
-from bokeh.models import ColumnDataSource, HoverTool
+import pandas as pd
 from bokeh.layouts import column
-from bokeh.transform import cumsum
+from bokeh.models import ColumnDataSource, HoverTool
 from bokeh.palettes import Category20c, Spectral6
+from bokeh.plotting import figure, output_file, save
+from bokeh.transform import cumsum
 
 from src.logger import setup_logger
 
 
 class Visualizer:
-    def __init__(self, data_list, output_dir):
+    def __init__(self, data_list: list[dict[str, Any]], output_dir: str | Path) -> None:
         """
         :param data_list: List of dictionaries containing demographic data.
         :param output_dir: Directory where the dashboard.html will be saved.
         """
         self.logger = setup_logger()
         self.output_dir = Path(output_dir)
+
+        if not self.output_dir.exists():
+            self.output_dir.mkdir(parents=True, exist_ok=True)
+            self.logger.info(f"Created output directory: {self.output_dir}")
 
         if data_list:
             self.df = pd.DataFrame(data_list)
@@ -32,9 +37,9 @@ class Visualizer:
             self.df = pd.DataFrame()
             self.logger.warning("Visualizer received empty data!")
 
-    def plot_charts(self):
+    def plot_charts(self) -> None:
         """
-        This function creates an HTML dashboard.
+        Create an interactive HTML dashboard with race, gender, and age charts.
         """
         if self.df.empty:
             self.logger.info("No data to visualize.")
@@ -84,14 +89,16 @@ class Visualizer:
                     gender_counts["count"] / gender_counts["count"].sum() * 2 * pi
                 )
 
-                if len(gender_counts) == 2:
+                n_genders = len(gender_counts)
+                if n_genders == 2:
                     gender_counts["color"] = ["navy", "orange"]
+                elif n_genders == 1:
+                    gender_counts["color"] = ["gray"]
                 else:
-                    gender_counts["color"] = (
-                        Category20c[len(gender_counts)]
-                        if len(gender_counts) > 2
-                        else ["gray"]
-                    )
+                    palette_size = min(n_genders, 20)
+                    gender_counts["color"] = Category20c[max(palette_size, 3)][
+                        :n_genders
+                    ]
 
                 source_gender = ColumnDataSource(gender_counts)
 

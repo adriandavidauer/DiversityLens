@@ -7,9 +7,9 @@ import logging
 import sys
 
 
-def setup_logger(name=__name__):
+def setup_logger(name: str = __name__) -> logging.Logger:
     """
-    Sets up a logger that writes to console and a log file.
+    Set up a logger that writes to console and a log file.
 
     :param name: Name of the logger instance.
     :return: Configured logger object.
@@ -17,7 +17,6 @@ def setup_logger(name=__name__):
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
 
-    # Prevent adding multiple handlers if they already exist
     if logger.handlers:
         return logger
 
@@ -25,12 +24,10 @@ def setup_logger(name=__name__):
         "%(asctime)s - %(levelname)s - %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
     )
 
-    # 1. Console Handler
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
 
-    # 2. File Handler
     file_handler = logging.FileHandler("application.log")
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)

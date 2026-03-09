@@ -1,9 +1,16 @@
 """
 This module is used to write out the results.
 """
-import csv
 
-def write_csv(file_path, data):
+import csv
+import logging
+from pathlib import Path
+from typing import Any
+
+logger = logging.getLogger(__name__)
+
+
+def write_csv(file_path: str | Path, data: list[dict[str, Any]]) -> None:
     """
     Write data to a CSV file.
 
@@ -11,8 +18,14 @@ def write_csv(file_path, data):
     :param data: List of dictionaries containing the data to write.
     """
     if not data:
-        print("No data to write.")
+        logger.warning("No data to write.")
         return
+
+    file_path = Path(file_path)
+    output_dir = file_path.parent
+    if output_dir != Path(".") and not output_dir.exists():
+        output_dir.mkdir(parents=True, exist_ok=True)
+        logger.info(f"Created output directory: {output_dir}")
 
     field_names = data[0].keys()
 
@@ -21,6 +34,6 @@ def write_csv(file_path, data):
             writer = csv.DictWriter(csv_file, fieldnames=field_names)
             writer.writeheader()
             writer.writerows(data)
-            print(f"Data successfully written to {file_path}")
+            logger.info(f"Data successfully written to {file_path}")
     except Exception as e:
-        print(f"Error writing CSV: {e}")
+        logger.error(f"Error writing CSV: {e}")

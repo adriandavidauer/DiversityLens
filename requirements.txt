@@ -1,5 +1,4 @@
-deepface
-tf-keras
-pandas
-matplotlib
-bokeh
+deepface>=0.0.93,<1.0
+tf-keras>=2.16,<3.0
+pandas>=2.0,<3.0
+bokeh>=3.0,<4.0
