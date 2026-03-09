@@ -29,8 +29,9 @@ def test_extensions_exist():
     assert ".webm" in Loader.VIDEO_EXTENSIONS
 
 
-def test_find_images_returns_list():
-    loader = Loader("tests/data")
+def test_find_images_returns_list(tmp_path):
+    (tmp_path / "sample.png").write_bytes(b"\x89PNG\r\n\x1a\n")
+    loader = Loader(tmp_path)
     images = loader.find_images()
     assert isinstance(images, list)
     for img in images:
@@ -38,15 +39,16 @@ def test_find_images_returns_list():
         assert img.suffix.lower() in Loader.IMAGE_EXTENSIONS
 
 
-def test_find_images_finds_png_files():
-    loader = Loader("tests/data")
+def test_find_images_finds_png_files(tmp_path):
+    (tmp_path / "sample.png").write_bytes(b"\x89PNG\r\n\x1a\n")
+    loader = Loader(tmp_path)
     images = loader.find_images()
     assert len(images) > 0
     assert all(img.suffix.lower() == ".png" for img in images)
 
 
-def test_find_videos_returns_list():
-    loader = Loader("tests/data")
+def test_find_videos_returns_list(tmp_path):
+    loader = Loader(tmp_path)
     videos = loader.find_videos()
     assert isinstance(videos, list)
     for vid in videos:
