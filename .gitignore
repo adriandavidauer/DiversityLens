@@ -1,3 +1,5 @@
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -205,3 +207,22 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+#CSV RESULTS
+*.csv
+
+#LOG files
+*.log
+
+# Dataset klasörleri
+data/
+tests/data/
+results/
+
+# Dosya uzantilari
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.avi
+*.mov
