@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop
     tags:
       - "v*"
 
@@ -51,7 +52,10 @@ jobs:
             echo "Deploying tag as version ${VERSION}..."
             mike deploy --push "${VERSION}" latest --update-aliases
             mike set-default --push latest
-          else
-            echo "Deploying main as dev..."
+          elif [[ "${{ github.ref_name }}" == "develop" ]]; then
+            echo "Deploying develop as dev..."
             mike deploy --push dev
+          else
+            echo "Deploying main as stable..."
+            mike deploy --push stable
           fi
