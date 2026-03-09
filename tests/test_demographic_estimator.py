@@ -54,7 +54,7 @@ class TestAnalyzeImage:
                 "age": 25,
                 "dominant_gender": "Woman",
                 "dominant_race": "asian",
-                "face_confidence": 0.88,
+                "face_confidence": 0.95,
             }
         ]
 
