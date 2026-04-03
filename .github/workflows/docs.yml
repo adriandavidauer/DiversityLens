@@ -54,7 +54,8 @@ jobs:
             mike set-default --push latest
           elif [[ "${{ github.ref_name }}" == "develop" ]]; then
             echo "Deploying develop as dev..."
-            mike deploy --push dev
+            mike deploy --push dev latest --update-aliases
+            mike set-default --push latest
           else
             echo "Deploying main as stable..."
             mike deploy --push stable
