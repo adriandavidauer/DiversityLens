@@ -29,10 +29,10 @@ jobs:
 
     - name: Run Tests and Generate Coverage
       run: |
-        pytest --cov=src --junitxml=pytest.xml --cov-report=xml:coverage.xml tests/
+        pytest --cov=src --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov-report=xml:coverage.xml tests/ | tee pytest-coverage.txt
 
     - name: Post Coverage Comment
       uses: MishaKav/pytest-coverage-comment@main
       with:
-        pytest-coverage-path: ./coverage.xml
+        pytest-coverage-path: ./pytest-coverage.txt
         junitxml-path: ./pytest.xml
