@@ -2,12 +2,31 @@
 name = "diversitylens"
 version = "0.2.0"
 description = "Analyze datasets of human faces for demographic diversity metrics"
+readme = "docs/README.md"
+license = {text = "MIT"}
 requires-python = ">=3.10"
+authors = [
+    {name = "Veli Ates"},
+    {name = "Adrian Auer"},
+]
+keywords = ["fairness", "bias", "face-analysis", "demographics", "deepface", "dataset-auditing"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
     "deepface>=0.0.93,<1.0",
     "tf-keras>=2.16,<3.0",
     "pandas>=2.0,<3.0",
     "bokeh>=3.0,<4.0",
+    "opencv-python-headless>=4.5,<5.0",
 ]
 
 [project.optional-dependencies]
@@ -22,6 +41,23 @@ docs = [
     "mkdocstrings[python]>=0.24",
     "mike>=2.0",
 ]
+
+[project.scripts]
+diversitylens = "src.main:main"
+
+[project.urls]
+Homepage = "https://github.com/adriandavidauer/DiversityLens"
+Documentation = "https://adriandavidauer.github.io/DiversityLens/"
+Repository = "https://github.com/adriandavidauer/DiversityLens"
+Issues = "https://github.com/adriandavidauer/DiversityLens/issues"
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
 
 [tool.ruff]
 target-version = "py310"
