@@ -298,6 +298,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -314,6 +332,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI Arguments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Formats
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -420,6 +501,58 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI Arguments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Formats
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -436,7 +569,45 @@
 
 
 <h1 id="diversitylens">DiversityLens</h1>
-<p>This tool can be used to visualize the datasets which include human faces.</p>
+<p>DiversityLens is an automated command-line tool for auditing the demographic composition of large-scale image and video datasets.</p>
+<h2 id="overview">Overview</h2>
+<p>Modern computer vision models require large datasets for training, but these datasets often contain hidden demographic imbalances that can lead to biased AI systems. DiversityLens addresses this problem by providing an end-to-end pipeline that:</p>
+<ol>
+<li><strong>Scans</strong> a dataset directory for all supported image and video files</li>
+<li><strong>Analyzes</strong> each detected face for age, gender, and race using DeepFace</li>
+<li><strong>Exports</strong> structured results to CSV</li>
+<li><strong>Visualizes</strong> demographic distributions through an interactive HTML dashboard</li>
+</ol>
+<h2 id="quick-start">Quick Start</h2>
+<pre><code class="language-bash">pip install diversitylens
+diversitylens --path /path/to/dataset --output results.csv
+</code></pre>
+<h2 id="cli-arguments">CLI Arguments</h2>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--path</code></td>
+<td><code>tests/data</code></td>
+<td>Path to the dataset directory</td>
+</tr>
+<tr>
+<td><code>--output</code></td>
+<td><code>Demographic_Results.csv</code></td>
+<td>Path to the output CSV file</td>
+</tr>
+</tbody>
+</table>
+<h2 id="supported-formats">Supported Formats</h2>
+<p><strong>Images:</strong> <code>.jpg</code>, <code>.jpeg</code>, <code>.png</code></p>
+<p><strong>Videos:</strong> <code>.mp4</code>, <code>.avi</code>, <code>.mov</code>, <code>.mkv</code>, <code>.webm</code></p>
+<p><strong>Archives:</strong> <code>.zip</code>, <code>.tar</code>, <code>.tar.gz</code>, <code>.tgz</code>, <code>.tar.bz2</code>, <code>.tar.xz</code></p>
 
 
 
