@@ -4,14 +4,14 @@ It generates an interactive HTML dashboard directly from memory.
 """
 
 from math import pi
-import pandas as pd
 from pathlib import Path
 
-from bokeh.plotting import figure, save, output_file
-from bokeh.models import ColumnDataSource, HoverTool
+import pandas as pd
 from bokeh.layouts import column
-from bokeh.transform import cumsum
+from bokeh.models import ColumnDataSource, HoverTool
 from bokeh.palettes import Category20c, Spectral6
+from bokeh.plotting import figure, output_file, save
+from bokeh.transform import cumsum
 
 from src.logger import setup_logger
 
