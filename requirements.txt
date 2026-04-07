@@ -3,3 +3,4 @@ tf-keras
 pandas
 matplotlib
 bokeh
+opencv-python-headless
