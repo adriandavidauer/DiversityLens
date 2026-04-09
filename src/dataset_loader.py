@@ -1,6 +1,7 @@
 """
-This module is responsible for searching and listing all relevant files(images/videos) in a given dataset directory.
-In will be used as the first step in order to create a demopgraphic analysis.
+This module searches and lists all relevant files (images/videos) in a
+given dataset directory. It will be used as the first step to create a
+demographic analysis.
 """
 
 import pathlib

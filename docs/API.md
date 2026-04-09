@@ -3,14 +3,13 @@
 ## Dataset Loader
 ::: src.dataset_loader
 
+##Face Detector
+
 ## Demographic Estimator
 ::: src.demographic_estimator
-
-## Data Writing
-::: src.data_writing
 
 ## Visualization
 ::: src.visualization
 
-## Logger
-::: src.logger
+## Main Module
+::: src.main

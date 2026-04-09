@@ -1,0 +1,10 @@
+Bootstrap: docker
+From: python:3.10
+
+%post
+    apt-get update && apt-get install -y libgl1-mesa-glsof libglib2.0-0
+    pip install deepface opencv-python-headless pandas bokeh tf-keras
+    pip install retina-face
+
+%runscript
+    python main.py "$@"

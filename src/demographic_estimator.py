@@ -3,9 +3,15 @@ This module is responsible for estimating age, gender, and race using DeepFace.
 It acts as a wrapper for the deep learning model.
 """
 
-from deepface import DeepFace
 from pathlib import Path
+
 import cv2
+from deepface import DeepFace
+
+
+def _ensure_list(result):
+    """Convert DeepFace result to list format (handles both single dict and list)."""
+    return result if isinstance(result, list) else [result]
 
 
 def analyze_image(image_path):
@@ -24,8 +30,7 @@ def analyze_image(image_path):
         enforce_detection=False,
         silent=True,
     )
-    if not isinstance(results, list):
-        results = [results]
+    results = _ensure_list(results)
     for face in results:
         # In case no face was detected
         if "dominant_race" not in face:
@@ -88,8 +93,7 @@ def analyze_video(video_path, skip_frames=30):  # Videos are read by OpenCV-then
                     silent=True,
                 )
 
-                if not isinstance(analysis, list):
-                    analysis = [analysis]
+                analysis = _ensure_list(analysis)
 
                 for face in analysis:
                     if "dominant_race" not in face:
