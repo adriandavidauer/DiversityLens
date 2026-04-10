@@ -3,9 +3,10 @@ This module is responsible for being the backbone of the project that merges oth
 """
 
 import argparse
+
+from src.data_writing import write_csv
 from src.dataset_loader import Loader, pathlib
 from src.demographic_estimator import analyze_image, analyze_video
-from src.data_writing import write_csv
 from src.logger import setup_logger
 from src.visualization import Visualizer
 

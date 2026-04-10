@@ -3,9 +3,10 @@ This module is responsible for estimating age, gender, and race using DeepFace.
 It acts as a wrapper for the deep learning model.
 """
 
-from deepface import DeepFace
 from pathlib import Path
+
 import cv2
+from deepface import DeepFace
 
 
 def analyze_image(image_path):

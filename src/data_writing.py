@@ -3,6 +3,7 @@ This module is used to write out the results.
 """
 import csv
 
+
 def write_csv(file_path, data):
     """
     Write data to a CSV file.

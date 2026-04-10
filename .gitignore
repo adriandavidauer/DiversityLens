@@ -226,3 +226,7 @@ results/
 *.mp4
 *.avi
 *.mov
+
+dashboard.html
+Demographic_Results.csv
+

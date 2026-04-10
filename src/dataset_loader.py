@@ -1,5 +1,6 @@
 """
-This module is responsible for searching and listing all relevant files(images/videos) in a given dataset directory.
+This module is responsible for searching and listing all relevant files(images/videos)
+in a given dataset directory.
 In will be used as the first step in order to create a demopgraphic analysis.
 """
 
