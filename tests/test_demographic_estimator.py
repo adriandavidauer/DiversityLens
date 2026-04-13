@@ -1,20 +1,26 @@
 import sys
 import types
 
-deepface_stub = types.ModuleType("deepface")
-deepface_stub.DeepFace = type("DeepFace", (), {"analyze": staticmethod(lambda **_: [])})
-sys.modules.setdefault("deepface", deepface_stub)
 
-from src.demographic_estimator import _passes_confidence, analyze_image
+def _import_estimator_module():
+    deepface_stub = types.ModuleType("deepface")
+    deepface_stub.DeepFace = type("DeepFace", (), {"analyze": staticmethod(lambda **_: [])})
+    sys.modules.setdefault("deepface", deepface_stub)
+
+    from src import demographic_estimator
+
+    return demographic_estimator
 
 
 def test_passes_confidence_helper():
-    assert _passes_confidence({"face_confidence": 0.95}, 0.9)
-    assert not _passes_confidence({"face_confidence": 0.2}, 0.9)
-    assert _passes_confidence({"face_confidence": 0.2}, 0.0)
+    estimator = _import_estimator_module()
+    assert estimator._passes_confidence({"face_confidence": 0.95}, 0.9)
+    assert not estimator._passes_confidence({"face_confidence": 0.2}, 0.9)
+    assert estimator._passes_confidence({"face_confidence": 0.2}, 0.0)
 
 
 def test_analyze_image_applies_confidence_filter(monkeypatch, tmp_path):
+    estimator = _import_estimator_module()
     image_path = tmp_path / "sample.jpg"
     image_path.write_bytes(b"jpg")
 
@@ -34,10 +40,14 @@ def test_analyze_image_applies_confidence_filter(monkeypatch, tmp_path):
             },
         ]
 
-    monkeypatch.setattr("src.demographic_estimator.DeepFace.analyze", fake_analyze)
+    monkeypatch.setattr(estimator.DeepFace, "analyze", fake_analyze)
 
-    filtered = analyze_image(image_path, detector_backend="retinaface", min_confidence=0.9)
-    unfiltered = analyze_image(image_path, detector_backend="retinaface", min_confidence=0.0)
+    filtered = estimator.analyze_image(
+        image_path, detector_backend="retinaface", min_confidence=0.9
+    )
+    unfiltered = estimator.analyze_image(
+        image_path, detector_backend="retinaface", min_confidence=0.0
+    )
 
     assert len(filtered) == 1
     assert filtered[0]["confidence"] == 0.95
