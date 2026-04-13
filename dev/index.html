@@ -602,12 +602,21 @@ diversitylens --path /path/to/dataset --output results.csv
 <td><code>Demographic_Results.csv</code></td>
 <td>Path to the output CSV file</td>
 </tr>
+<tr>
+<td><code>--detector-backend</code></td>
+<td><code>retinaface</code></td>
+<td>DeepFace detector backend (e.g. <code>retinaface</code>, <code>opencv</code>, <code>mtcnn</code>)</td>
+</tr>
+<tr>
+<td><code>--min-confidence</code></td>
+<td><code>0.9</code></td>
+<td>Minimum face confidence for keeping detections (<code>0</code> disables filtering)</td>
+</tr>
 </tbody>
 </table>
 <h2 id="supported-formats">Supported Formats</h2>
 <p><strong>Images:</strong> <code>.jpg</code>, <code>.jpeg</code>, <code>.png</code></p>
 <p><strong>Videos:</strong> <code>.mp4</code>, <code>.avi</code>, <code>.mov</code>, <code>.mkv</code>, <code>.webm</code></p>
-<p><strong>Archives:</strong> <code>.zip</code>, <code>.tar</code>, <code>.tar.gz</code>, <code>.tgz</code>, <code>.tar.bz2</code>, <code>.tar.xz</code></p>
 
 
 
