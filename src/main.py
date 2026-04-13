@@ -27,12 +27,31 @@ def main():
         type=str,
         help="Path to the output CSV file.",
     )
+    parser.add_argument(
+        "--detector-backend",
+        default="retinaface",
+        type=str,
+        help="DeepFace detector backend (e.g. retinaface, opencv, mtcnn, ssd).",
+    )
+    parser.add_argument(
+        "--min-confidence",
+        default=0.9,
+        type=float,
+        help="Minimum face confidence to keep a detection (0 disables filtering).",
+    )
 
     args = parser.parse_args()
     path = args.path
     output_file = args.output
+    detector_backend = args.detector_backend
+    min_confidence = args.min_confidence
 
     logger.info(f"Analyzing the folder: {path}")
+    logger.info(
+        "Detector backend: %s | Min confidence: %.2f",
+        detector_backend,
+        min_confidence,
+    )
 
     # Find the images
     first_data = Loader(path)
@@ -57,7 +76,11 @@ def main():
     # Analyze Images
     for image_path in found_images:
         try:
-            result_list = analyze_image(image_path)
+            result_list = analyze_image(
+                image_path,
+                detector_backend=detector_backend,
+                min_confidence=min_confidence,
+            )
             if result_list:
                 all_results.extend(result_list)
                 logger.info(
@@ -73,7 +96,11 @@ def main():
         logger.warning(f"Found {len(found_videos)} videos")
         for video_path in found_videos:
             try:
-                result_list = analyze_video(video_path)
+                result_list = analyze_video(
+                    video_path,
+                    detector_backend=detector_backend,
+                    min_confidence=min_confidence,
+                )
                 if result_list:
                     all_results.extend(result_list)
                     logger.info(

@@ -9,7 +9,14 @@ import cv2
 from deepface import DeepFace
 
 
-def analyze_image(image_path):
+def _passes_confidence(face, min_confidence):
+    """Return True when the detected face confidence meets the threshold."""
+    if min_confidence <= 0:
+        return True
+    return face.get("face_confidence", 0) >= min_confidence
+
+
+def analyze_image(image_path, detector_backend="retinaface", min_confidence=0.9):
     """
     This function takes an image path and returns a LIST of demographic info for all faces found.
     :param image_path: Path to the image file.
@@ -21,7 +28,7 @@ def analyze_image(image_path):
     results = DeepFace.analyze(
         img_path=img_str,
         actions=["age", "gender", "race"],
-        detector_backend="opencv",
+        detector_backend=detector_backend,
         enforce_detection=False,
         silent=True,
     )
@@ -30,6 +37,8 @@ def analyze_image(image_path):
     for face in results:
         # In case no face was detected
         if "dominant_race" not in face:
+            continue
+        if not _passes_confidence(face, min_confidence):
             continue
 
         summary = {
@@ -44,7 +53,12 @@ def analyze_image(image_path):
     return processed_faces
 
 
-def analyze_video(video_path, skip_frames=30):  # Videos are read by OpenCV-then
+def analyze_video(
+    video_path,
+    skip_frames=30,
+    detector_backend="retinaface",
+    min_confidence=0.9,
+):  # Videos are read by OpenCV-then
     """
     This function takes a video path and analyzes frames periodically.
     :param video_path: Path to the video file.
@@ -84,7 +98,7 @@ def analyze_video(video_path, skip_frames=30):  # Videos are read by OpenCV-then
                 analysis = DeepFace.analyze(
                     img_path=rgb_frame,
                     actions=["age", "gender", "race"],
-                    detector_backend="opencv",
+                    detector_backend=detector_backend,
                     enforce_detection=False,
                     silent=True,
                 )
@@ -94,6 +108,8 @@ def analyze_video(video_path, skip_frames=30):  # Videos are read by OpenCV-then
 
                 for face in analysis:
                     if "dominant_race" not in face:
+                        continue
+                    if not _passes_confidence(face, min_confidence):
                         continue
 
                     summary = {

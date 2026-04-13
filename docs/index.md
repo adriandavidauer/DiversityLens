@@ -24,11 +24,11 @@ diversitylens --path /path/to/dataset --output results.csv
 |----------|---------|-------------|
 | `--path` | `tests/data` | Path to the dataset directory |
 | `--output` | `Demographic_Results.csv` | Path to the output CSV file |
+| `--detector-backend` | `retinaface` | DeepFace detector backend (e.g. `retinaface`, `opencv`, `mtcnn`) |
+| `--min-confidence` | `0.9` | Minimum face confidence for keeping detections (`0` disables filtering) |
 
 ## Supported Formats
 
 **Images:** `.jpg`, `.jpeg`, `.png`
 
 **Videos:** `.mp4`, `.avi`, `.mov`, `.mkv`, `.webm`
-
-**Archives:** `.zip`, `.tar`, `.tar.gz`, `.tgz`, `.tar.bz2`, `.tar.xz`
