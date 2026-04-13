@@ -10,7 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Set DeepFace detector backend default to `retinaface` (configurable from CLI)
 - Added active confidence filtering (`--min-confidence`, default `0.9`) for face detections
+- Implemented automatic archive extraction during dataset traversal
 - Updated documentation to reflect currently implemented file format support
+- Expanded automated tests for archive handling and confidence filtering
 
 ## [0.2.0] - 2026-03-09
 

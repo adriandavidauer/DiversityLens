@@ -32,3 +32,5 @@ diversitylens --path /path/to/dataset --output results.csv
 **Images:** `.jpg`, `.jpeg`, `.png`
 
 **Videos:** `.mp4`, `.avi`, `.mov`, `.mkv`, `.webm`
+
+**Archives (auto-extracted):** `.zip`, `.tar`, `.tar.gz`, `.tgz`, `.tar.bz2`, `.tar.xz`
