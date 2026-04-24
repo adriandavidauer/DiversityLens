@@ -55,18 +55,19 @@ def analyze_image(image_path, detector_backend="retinaface", min_confidence=0.9)
 
 def analyze_video(
     video_path,
-    skip_frames=30,
+    skip_frames=1,
     detector_backend="retinaface",
     min_confidence=0.9,
 ):  # Videos are read by OpenCV-then
     """
     This function takes a video path and analyzes frames periodically.
     :param video_path: Path to the video file.
-    :param skip_frames: Number of frames to skip (e.g., 30 for approx 1 sec if FPS is 30).
+    :param skip_frames: Analyze every n-th frame. Use 1 to analyze all frames.
     :return: List of dictionaries with demographic information for each face found.
     """
     # If it's Path object,convert it into string, if it's string then keep it
     video_path_str = str(video_path)
+    frame_step = max(1, int(skip_frames))
 
     cap = cv2.VideoCapture(video_path_str)
 
@@ -76,10 +77,6 @@ def analyze_video(
 
     results_data = []
     frame_count = 0
-    fps = cap.get(cv2.CAP_PROP_FPS)  # FPS of the video
-
-    if fps == 0:  # as a precaution
-        fps = 30
 
     while True:
         ret, frame = cap.read()
@@ -88,8 +85,7 @@ def analyze_video(
         if not ret:
             break
 
-        # do the execution 'skip_frames' times
-        if frame_count % skip_frames == 0:
+        if frame_count % frame_step == 0:
             try:
                 # DeepFace expects RGB
                 rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

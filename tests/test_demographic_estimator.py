@@ -52,3 +52,54 @@ def test_analyze_image_applies_confidence_filter(monkeypatch, tmp_path):
     assert len(filtered) == 1
     assert filtered[0]["confidence"] == 0.95
     assert len(unfiltered) == 2
+
+
+def test_analyze_video_respects_frame_step_and_confidence(monkeypatch, tmp_path):
+    estimator = _import_estimator_module()
+    video_path = tmp_path / "sample.mp4"
+    video_path.write_bytes(b"mp4")
+
+    frames = ["frame0", "frame1", "frame2"]
+
+    class FakeCapture:
+        def __init__(self, video_path_str):
+            self.video_path_str = video_path_str
+            self.index = 0
+
+        def isOpened(self):
+            return True
+
+        def read(self):
+            if self.index >= len(frames):
+                return False, None
+            frame = frames[self.index]
+            self.index += 1
+            return True, frame
+
+        def release(self):
+            return None
+
+    analyzed_frames = []
+
+    def fake_analyze(**kwargs):
+        analyzed_frames.append(kwargs["img_path"])
+        return {
+            "age": 30,
+            "dominant_gender": "Man",
+            "dominant_race": "white",
+            "face_confidence": 0.95,
+        }
+
+    monkeypatch.setattr(estimator.cv2, "VideoCapture", FakeCapture)
+    monkeypatch.setattr(estimator.cv2, "cvtColor", lambda frame, _: frame)
+    monkeypatch.setattr(estimator.DeepFace, "analyze", fake_analyze)
+
+    results = estimator.analyze_video(
+        video_path,
+        skip_frames=2,
+        detector_backend="retinaface",
+        min_confidence=0.9,
+    )
+
+    assert analyzed_frames == ["frame0", "frame2"]
+    assert len(results) == 2

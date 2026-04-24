@@ -39,18 +39,26 @@ def main():
         type=float,
         help="Minimum face confidence to keep a detection (0 disables filtering).",
     )
+    parser.add_argument(
+        "--video-frame-step",
+        default=1,
+        type=int,
+        help="Analyze every n-th video frame (1 analyzes all frames).",
+    )
 
     args = parser.parse_args()
     path = args.path
     output_file = args.output
     detector_backend = args.detector_backend
     min_confidence = args.min_confidence
+    video_frame_step = args.video_frame_step
 
     logger.info(f"Analyzing the folder: {path}")
     logger.info(
-        "Detector backend: %s | Min confidence: %.2f",
+        "Detector backend: %s | Min confidence: %.2f | Video frame step: %d",
         detector_backend,
         min_confidence,
+        video_frame_step,
     )
 
     # Find the images
@@ -98,6 +106,7 @@ def main():
             try:
                 result_list = analyze_video(
                     video_path,
+                    skip_frames=video_frame_step,
                     detector_backend=detector_backend,
                     min_confidence=min_confidence,
                 )
