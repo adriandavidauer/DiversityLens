@@ -7,11 +7,12 @@ UTKFace filename format: [age]_[gender]_[race]_[date&time].jpg
   Race:   0 = White, 1 = Black, 2 = Asian, 3 = Indian, 4 = Others
 """
 
-import pandas as pd
-import numpy as np
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # === UTKFace label mappings ===
 UTK_GENDER_MAP = {0: "Man", 1: "Woman"}

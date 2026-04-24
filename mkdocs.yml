@@ -11,6 +11,8 @@ extra:
     provider: mike
 
 docs_dir: docs
+exclude_docs: |
+  README.md
 plugins:
   - search
   - mike:
