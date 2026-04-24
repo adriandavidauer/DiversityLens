@@ -413,10 +413,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#src.dataset_loader.Loader.VIDEO_EXTENSIONS" class="md-nav__link">
+  <a href="#src.dataset_loader.Loader.ARCHIVE_EXTENSIONS" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VIDEO_EXTENSIONS
+        ARCHIVE_EXTENSIONS
       
     </span>
   </a>
@@ -450,6 +450,17 @@
     <span class="md-ellipsis">
       
         find_videos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.dataset_loader.Loader.is_archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_archive
       
     </span>
   </a>
@@ -785,10 +796,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#src.dataset_loader.Loader.VIDEO_EXTENSIONS" class="md-nav__link">
+  <a href="#src.dataset_loader.Loader.ARCHIVE_EXTENSIONS" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VIDEO_EXTENSIONS
+        ARCHIVE_EXTENSIONS
       
     </span>
   </a>
@@ -822,6 +833,17 @@
     <span class="md-ellipsis">
       
         find_videos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.dataset_loader.Loader.is_archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_archive
       
     </span>
   </a>
@@ -1126,8 +1148,8 @@ In will be used as the first step in order to create a demopgraphic analysis.</p
 
 
 
-<h4 id="src.dataset_loader.Loader.VIDEO_EXTENSIONS" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">VIDEO_EXTENSIONS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;.mp4&#39;</span><span class="p">,</span> <span class="s1">&#39;.avi&#39;</span><span class="p">,</span> <span class="s1">&#39;.mov&#39;</span><span class="p">,</span> <span class="s1">&#39;.mkv&#39;</span><span class="p">,</span> <span class="s1">&#39;.webm&#39;</span><span class="p">}</span></code>
+<h4 id="src.dataset_loader.Loader.ARCHIVE_EXTENSIONS" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">ARCHIVE_EXTENSIONS</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;.tar.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;.tar.bz2&#39;</span><span class="p">,</span> <span class="s1">&#39;.tar.xz&#39;</span><span class="p">,</span> <span class="s1">&#39;.tgz&#39;</span><span class="p">,</span> <span class="s1">&#39;.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;.tar&#39;</span><span class="p">)</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
@@ -1198,6 +1220,28 @@ In will be used as the first step in order to create a demopgraphic analysis.</p
 
         <p>This function finds the videos in a given path.
 ::return: List of videos file paths.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="src.dataset_loader.Loader.is_archive" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">is_archive</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return True if file_path matches a supported archive extension.</p>
 
 
     </div>
@@ -1281,7 +1325,7 @@ It acts as a wrapper for the deep learning model.</p>
 
 
 <h3 id="src.demographic_estimator.analyze_video" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">analyze_video</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">skip_frames</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">detector_backend</span><span class="o">=</span><span class="s1">&#39;retinaface&#39;</span><span class="p">,</span> <span class="n">min_confidence</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">analyze_video</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">skip_frames</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">detector_backend</span><span class="o">=</span><span class="s1">&#39;retinaface&#39;</span><span class="p">,</span> <span class="n">min_confidence</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span></code>
 
 </h3>
 
@@ -1290,7 +1334,7 @@ It acts as a wrapper for the deep learning model.</p>
 
         <p>This function takes a video path and analyzes frames periodically.
 :param video_path: Path to the video file.
-:param skip_frames: Number of frames to skip (e.g., 30 for approx 1 sec if FPS is 30).
+:param skip_frames: Analyze every n-th frame. Use 1 to analyze all frames.
 :return: List of dictionaries with demographic information for each face found.</p>
 
 
