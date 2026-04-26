@@ -16,7 +16,14 @@ def test_extensions_exist():
     assert ".mp4" in Loader.VIDEO_EXTENSIONS
     assert Loader.is_archive("dataset.zip")
     assert Loader.is_archive("dataset.tar.gz")
+    assert Loader.is_archive("DATASET.TAR.XZ")
     assert not Loader.is_archive("dataset.csv")
+
+
+def test_archive_base_name_handles_compound_extensions():
+    assert Loader._archive_base_name("faces.tar.gz") == "faces"
+    assert Loader._archive_base_name("videos.TGZ") == "videos"
+    assert Loader._archive_base_name("images.zip") == "images"
 
 
 def test_find_images_and_videos(tmp_path):
