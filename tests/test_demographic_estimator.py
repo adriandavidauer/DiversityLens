@@ -91,7 +91,10 @@ def test_analyze_video_respects_frame_step_and_confidence(monkeypatch, tmp_path)
         }
 
     monkeypatch.setattr(estimator.cv2, "VideoCapture", FakeCapture)
-    monkeypatch.setattr(estimator.cv2, "cvtColor", lambda frame, _: frame)
+    def fail_if_converted(*_args, **_kwargs):
+        raise AssertionError("video frames must reach DeepFace unconverted (BGR)")
+
+    monkeypatch.setattr(estimator.cv2, "cvtColor", fail_if_converted)
     monkeypatch.setattr(estimator.DeepFace, "analyze", fake_analyze)
 
     results = estimator.analyze_video(

@@ -79,20 +79,21 @@ def analyze_video(
     frame_count = 0
 
     while True:
-        ret, frame = cap.read()
+        ret, frame = cap.read() # ret= True if the frame is read correctly, False otherwise
+                                # frame= the image of the frame
 
         # if video ends, break the loop
         if not ret:
             break
 
-        if frame_count % frame_step == 0:
+        if frame_count % frame_step == 0:   # Analyze every n-th frame
             try:
-                # DeepFace expects RGB
-                rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-
-                # send array to img_path parameter
+                # OpenCV returns frames in BGR order, and DeepFace expects numpy
+                # input in BGR order as well (its own image loader uses cv2.imread).
+                # The frame is therefore passed unchanged; converting it to RGB
+                # swapped the colour channels before the analysis.
                 analysis = DeepFace.analyze(
-                    img_path=rgb_frame,
+                    img_path=frame,
                     actions=["age", "gender", "race"],
                     detector_backend=detector_backend,
                     enforce_detection=False,
