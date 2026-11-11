@@ -8,7 +8,7 @@ from src.data_writing import write_csv
 from src.dataset_loader import Loader, pathlib
 from src.demographic_estimator import analyze_image, analyze_video
 from src.logger import setup_logger
-from src.visualization import Visualizer
+from src.visualization import Visualizer, dashboard_name_for
 
 
 def main():
@@ -129,7 +129,11 @@ def main():
             # data_visualizer = Visualizer(output_file)
             logger.info("Starting visualization...")
             output_dir = pathlib.Path(output_file).parent
-            viz = Visualizer(all_results, output_dir)
+            viz = Visualizer(
+                all_results,
+                output_dir,
+                dashboard_name=dashboard_name_for(output_file),
+            )
             viz.plot_charts()
 
         except Exception as e:

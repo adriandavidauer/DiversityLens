@@ -14,6 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implemented automatic archive extraction during dataset traversal
 - Updated documentation to emphasize dataset-level auditing, social robotics risk prevention, and the supporting role of backend selection
 - Expanded automated tests for archive handling and confidence filtering
+- Dashboard charts show the share in percent next to every count (#37)
+- The dashboard embeds BokehJS (inline resources), so it opens offline without a CDN
+
+### Fixed
+- Video frames are passed to DeepFace in BGR order; the BGR-to-RGB conversion in the video path swapped the colour channels
+- Dashboard age-group labels now match the bins (`0-6`, `7-13`, ..., `70+`); ages of 100 and above are no longer dropped
+- The dashboard is saved next to its CSV as `<csv-name>_dashboard.html` instead of a fixed `dashboard.html`, so runs no longer overwrite each other (#36)
 
 ## [0.2.0] - 2026-03-09
 
