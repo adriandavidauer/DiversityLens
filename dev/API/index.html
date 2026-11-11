@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -628,6 +628,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#src.visualization.add_shares" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_shares
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.visualization.dashboard_name_for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dashboard_name_for
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1011,6 +1033,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#src.visualization.add_shares" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_shares
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src.visualization.dashboard_name_for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dashboard_name_for
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1149,7 +1193,7 @@ In will be used as the first step in order to create a demopgraphic analysis.</p
 
 
 <h4 id="src.dataset_loader.Loader.ARCHIVE_EXTENSIONS" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">ARCHIVE_EXTENSIONS</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;.tar.gz&#39;</span><span class="p">,</span> <span class="s1">&#39;.tar.bz2&#39;</span><span class="p">,</span> <span class="s1">&#39;.tar.xz&#39;</span><span class="p">,</span> <span class="s1">&#39;.tgz&#39;</span><span class="p">,</span> <span class="s1">&#39;.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;.tar&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">ARCHIVE_EXTENSIONS</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'.tar.gz'</span><span class="p">,</span> <span class="s1">'.tar.bz2'</span><span class="p">,</span> <span class="s1">'.tar.xz'</span><span class="p">,</span> <span class="s1">'.tgz'</span><span class="p">,</span> <span class="s1">'.zip'</span><span class="p">,</span> <span class="s1">'.tar'</span><span class="p">)</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
@@ -1305,7 +1349,7 @@ It acts as a wrapper for the deep learning model.</p>
 
 
 <h3 id="src.demographic_estimator.analyze_image" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">analyze_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">detector_backend</span><span class="o">=</span><span class="s1">&#39;retinaface&#39;</span><span class="p">,</span> <span class="n">min_confidence</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">analyze_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">detector_backend</span><span class="o">=</span><span class="s1">'retinaface'</span><span class="p">,</span> <span class="n">min_confidence</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span></code>
 
 </h3>
 
@@ -1325,7 +1369,7 @@ It acts as a wrapper for the deep learning model.</p>
 
 
 <h3 id="src.demographic_estimator.analyze_video" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">analyze_video</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">skip_frames</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">detector_backend</span><span class="o">=</span><span class="s1">&#39;retinaface&#39;</span><span class="p">,</span> <span class="n">min_confidence</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">analyze_video</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">skip_frames</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">detector_backend</span><span class="o">=</span><span class="s1">'retinaface'</span><span class="p">,</span> <span class="n">min_confidence</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span></code>
 
 </h3>
 
@@ -1488,7 +1532,7 @@ It generates an interactive HTML dashboard directly from memory.</p>
 
 
 <h4 id="src.visualization.Visualizer.__init__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">data_list</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">data_list</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">dashboard_name</span><span class="o">=</span><span class="n">DEFAULT_DASHBOARD_NAME</span><span class="p">)</span></code>
 
 </h4>
 
@@ -1496,7 +1540,9 @@ It generates an interactive HTML dashboard directly from memory.</p>
     <div class="doc doc-contents ">
 
         <p>:param data_list: List of dictionaries containing demographic data.
-:param output_dir: Directory where the dashboard.html will be saved.</p>
+:param output_dir: Directory where the dashboard will be saved.
+:param dashboard_name: File name of the dashboard. Use a name that is unique
+    per run (see <code>dashboard_name_for</code>) so that runs do not overwrite each other.</p>
 
 
     </div>
@@ -1515,6 +1561,9 @@ It generates an interactive HTML dashboard directly from memory.</p>
     <div class="doc doc-contents ">
 
         <p>This function creates an HTML dashboard.</p>
+<p>BokehJS is embedded in the file (inline resources), so the dashboard also
+opens offline and does not depend on an external CDN.</p>
+<p>:return: Path of the written dashboard, or None if nothing was written.</p>
 
 
     </div>
@@ -1529,6 +1578,47 @@ It generates an interactive HTML dashboard directly from memory.</p>
 
 </div>
 
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="src.visualization.add_shares" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">add_shares</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Add a <code>percent</code> column and a <code>label</code> column ("count (percent%)").</p>
+<p>:param counts: DataFrame with a <code>count</code> column.
+:return: A copy of the DataFrame with the two new columns.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="src.visualization.dashboard_name_for" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">dashboard_name_for</span><span class="p">(</span><span class="n">csv_path</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the dashboard file name that belongs to a results CSV.</p>
+<p>The dashboard is saved next to its CSV with the same stem, e.g.
+<code>utkface_results.csv</code> -&gt; <code>utkface_results_dashboard.html</code>, so runs that
+write different CSV files no longer overwrite each other's dashboard.</p>
+
+
+    </div>
+
+</div>
 
 
 
@@ -1650,10 +1740,10 @@ It logs messages to both the console and a file named 'application.log'.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "search.suggest"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
