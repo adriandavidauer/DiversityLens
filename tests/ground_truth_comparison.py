@@ -145,8 +145,8 @@ def run_comparison(csv_path: str):
     # Age error by age group
     print("\nMAE by Age Group:")
     bins = [0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 120]
-    labels_age = ["0-7", "8-14", "15-21", "22-28", "29-35",
-                  "36-42", "43-49", "50-56", "57-63", "64-70", "70+"]
+    labels_age = ["0-6", "7-13", "14-20", "21-27", "28-34",
+                  "35-41", "42-48", "49-55", "56-62", "63-69", "70+"]
     df["gt_age_group"] = pd.cut(df["gt_age"], bins=bins, labels=labels_age, right=False)
 
     age_group_stats = df.groupby("gt_age_group", observed=False).apply(
